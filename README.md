@@ -11,7 +11,7 @@ Deze handleiding beschrijft SQL-query's en stappen voor het effectief ophalen, v
 ## Datawarehouse query's uitvoeren
 ### Totaal aantal reizen en omzet per maand ophalen
 
-1-Voer de volgende query uit om het totale aantal reizen en de omzet per maand op te halen.
+--Voer de volgende query uit om het totale aantal reizen en de omzet per maand op te halen.
 
 ```sql
 SELECT
@@ -24,7 +24,7 @@ ON T.[DatumID] = D.[DatumID]
 GROUP BY D.MaandNaam;
 
 
-2-Gemiddelde reisduur en -afstand per dag
+--Gemiddelde reisduur en -afstand per dag
 Voer de volgende query uit om reizen per dag van de week te analyseren.
 SELECT 
     D.DayName, 
@@ -36,7 +36,7 @@ JOIN dbo.[Date] AS D
 GROUP BY D.DayName;
 
 
-3-Top 10 ophaal- en afleverlocaties
+--Top 10 ophaal- en afleverlocaties
 Vind de populairste ophaal- en afleverlocaties.
 SELECT TOP 10 
     G.City, 
@@ -48,7 +48,7 @@ GROUP BY G.City
 ORDER BY TotalTrips DESC;
 
 
-4-Verificatie van gegevensconsistentie
+--Verificatie van gegevensconsistentie
 Controleer op reizen met een ongebruikelijk lange duur
 Controleer of reizen langer dan 24 uur duren.
 SELECT COUNT(*) 
@@ -57,7 +57,7 @@ WHERE TripDurationSeconds > 86400;
 
 
 
-5-Controleer en verwijder negatieve reisduren
+--Controleer en verwijder negatieve reisduren
 Identificeer en verwijder reizen met ongeldige duurwaarden.
 SELECT COUNT(*) 
 FROM dbo.Trip 
@@ -67,7 +67,7 @@ DELETE FROM dbo.Trip
 WHERE TripDurationSeconds < 0;
 
 
-6-Opslaan als weergave
+--Opslaan als weergave
 Een gefilterde weergave maken voor reizen in januari
 Genereer een weergave die reizen filtert zodat alleen die uit januari worden opgenomen.
 SELECT 
